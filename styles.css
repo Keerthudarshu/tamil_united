@@ -221,3 +221,126 @@ header h1 {
         background: rgb(75,85,99);
     }
 }
+/* Contact Form Styles */
+.contact-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  .contact-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #2980b9;
+  }
+  .contact-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(#ffdad5, #fff7f9);
+  }
+  .contact-left{
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .contact-left-title h2{
+    font-weight: 600;
+    color: #a363aa;
+    font-size: 40px;
+    margin-bottom: 5px;
+  }
+  .contact-left-title hr{
+    border: none;
+    height: 5px;
+    width: 120px;
+    background-color: #a363aa;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  .contact-inputs{
+    width:400px;
+    height:50px;
+    border:none;
+    outline: none;
+    padding-left: 25px;
+    font-weight: 500;
+    color: #666;
+    border-radius: 50px;
+  }
+  .contact-left textarea{
+    height:150px;
+    padding-top: 15px;
+    border-radius: 20px;
+  }
+  .contact-inputs:focus{
+    border: 2px solid #ff994f;
+  }
+
+  .contact-inputs::placeholder{
+    color: #a9a9a9;
+  }
+.contact-left button{
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    font-size: 16px;
+    color: #fff;
+    gap:  10px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(270deg, #ff994f, #fa6d86);
+    cursor: pointer;
+}
+.contact-left button:hover{
+    height: 15px;
+}
+.contact-right img{
+    width:500px;
+}
+@media (min-width: 800px) {
+    .contact-inputs{
+        width: 80vw;
+    }
+    .contact-right img{
+        display: none;
+    }
+}
