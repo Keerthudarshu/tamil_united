@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Upload</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Upload Image</h1>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <label for="category">Category:</label>
+    <select name="category" id="category" required>
+      <option value="">Select a Category</option>
+      <option value="Medical">Medical</option>
+      <option value="Sports">Sports</option>
+    </select>
+
+    <label for="type">Type:</label>
+    <select name="type" id="type" required>
+      <option value="">Select a Type</option>
+      <option value="Poster">Poster</option>
+      <option value="Banner">Banner</option>
+    </select>
+
+    <label for="description">Description:</label>
+    <textarea name="description" id="description" rows="4" required></textarea>
+
+    <label for="image">Select Image:</label>
+    <input type="file" name="image" id="image" accept="image/*" required>
+
+    <button type="submit">Upload</button>
+  </form>
+
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', async function (event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+
+      try {
+        const response = await fetch('/upload', {
+          method: 'POST',
+          body: formData
+        });
+        if (response.ok) {
+          alert('Image uploaded successfully!');
+          window.location.href = 'album.html';
+        } else {
+          alert('Upload failed. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    });
+  </script>
+</body>
+</html>

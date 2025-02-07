@@ -1,0 +1,347 @@
+/* Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+@keyframes moveLeftToRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.moving-text {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    gap: 10px; /* Adds spacing between image and text */
+    animation: moveLeftToRight 10s linear infinite;
+}
+
+.textlogo {
+    height: 50px !important;
+    vertical-align: middle !important;
+    display: inline-block;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Sidebar for Desktop View */
+.sidebar {
+    width: 250px;
+    background-color: rgb(31,41,55);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.sidebar .logo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+.sidebar .logo img {
+    width: 80px;
+    border-radius: 50%;
+}
+.sidebar h2 {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.sidebar .menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.sidebar .menu li {
+    margin: 10px 0;
+}
+
+.sidebar .menu a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    background: #444;
+    border-radius: 5px;
+}
+
+.sidebar .menu a:hover {
+    background: #555;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+header h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Slideshow Styles */
+.carousel {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+}
+
+.slide {
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+    border-radius: 10px;
+    height: 400px;
+}
+
+/* Navigation Arrows */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.3s ease;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    user-select: none;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Fade Animation */
+.fade {
+    animation: fadeEffect 2.5s;
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0.4;}
+    to {opacity: 1;}
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+        background: rgb(31,41,55);
+        align-items: center;
+        text-align: center;
+    }
+
+    .sidebar .logo {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .sidebar h2 {
+        text-align: center;
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    .sidebar .menu {
+        display: flex;
+        justify-content: space-between; /* Ensures equal spacing */
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .sidebar .menu li {
+        list-style: none;
+        flex: 1; /* Equal width for all items */
+        text-align: center;
+    }
+
+    .sidebar .menu a {
+        display: block;
+        padding: 10px;
+        background: rgb(55,65,81);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+    }
+
+    .sidebar .menu a:hover {
+        background: rgb(75,85,99);
+    }
+}
+/* Contact Form Styles */
+.contact-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  .contact-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #2980b9;
+  }
+  .contact-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(#ffdad5, #fff7f9);
+  }
+  .contact-left{
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .contact-left-title h2{
+    font-weight: 600;
+    color: #a363aa;
+    font-size: 40px;
+    margin-bottom: 5px;
+  }
+  .contact-left-title hr{
+    border: none;
+    height: 5px;
+    width: 120px;
+    background-color: #a363aa;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  .contact-inputs{
+    width:400px;
+    height:50px;
+    border:none;
+    outline: none;
+    padding-left: 25px;
+    font-weight: 500;
+    color: #666;
+    border-radius: 50px;
+  }
+  .contact-left textarea{
+    height:150px;
+    padding-top: 15px;
+    border-radius: 20px;
+  }
+  .contact-inputs:focus{
+    border: 2px solid #ff994f;
+  }
+
+  .contact-inputs::placeholder{
+    color: #a9a9a9;
+  }
+.contact-left button{
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    font-size: 16px;
+    color: #fff;
+    gap:  10px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(270deg, #ff994f, #fa6d86);
+    cursor: pointer;
+}
+.contact-left button:hover{
+    height: 15px;
+}
+.contact-right img{
+    width:500px;
+}
+@media (min-width: 800px) {
+    .contact-inputs{
+        width: 80vw;
+    }
+    .contact-right img{
+        display: none;
+    }
+    
+}
