@@ -19,8 +19,14 @@
             </div>
             <ul class="menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="medical.html">Medical</a></li>
-                <li><a href="sports.html">Sports</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">category</a>
+                    <div class="dropdown-content">
+                        <a href="sports.html">Sports</a>
+                        <a href="Education.html">Education</a>
+                        <a href="medical.html">Medical</a>
+                    </div>
+                </li>
                 <li><a href="album.html">Album</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contect.html">Contact</a></li>
@@ -37,7 +43,10 @@
             </header>
 
             <!-- Image Slideshow -->
-            <div class="carousel">
+            <div id="slideshowContainer" class="carousel">
+            <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+            <a class="next" onclick="changeSlide(1)">&#10095;</a>
+            <!-- <div class="carousel">
                 <div class="slide fade">
                     <img src="src/image/banner/banner4.jpg" alt="Group Image 1">
                 </div>
@@ -46,11 +55,11 @@
                 </div>
                 <div class="slide fade">
                     <img src="src/image/banner/banner4.jpg" alt="Group Image 3">
-                </div>
+                </div> -->
 
                 <!-- Navigation Arrows -->
-                <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
-                <a class="next" onclick="changeSlide(1)">&#10095;</a>
+                <!-- <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+                <a class="next" onclick="changeSlide(1)">&#10095;</a> -->
             </div>
 
             <div class="content">
@@ -59,7 +68,92 @@
             </div>
         </div>
     </div>
+<script>
+    async function fetchBannerImages() {
+  try {
+    const response = await fetch('http://localhost:3000/images/banner');
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-    <script src="script.js"></script>
+    const images = await response.json();
+    const slideshowContainer = document.getElementById('slideshowContainer');
+    
+    images.forEach((image, index) => {
+      const slideDiv = document.createElement('div');
+      slideDiv.classList.add('slide', 'fade');
+      if (index === 0) slideDiv.classList.add('active');
+
+      slideDiv.innerHTML = `
+        <img src="/uploads/${image.filename}" alt="${image.description}">
+      `;
+      slideshowContainer.appendChild(slideDiv);
+    });
+
+    initSlideshow(); // Initialize slideshow functionality
+  } catch (error) {
+    console.error('Error fetching banner images:', error);
+  }
+}
+
+let slideIndex = 0;
+
+// Fetch and display banner images
+async function fetchBannerImages() {
+  try {
+    const response = await fetch('http://localhost:3000/images/banner');
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const images = await response.json();
+    const slideshowContainer = document.getElementById('slideshowContainer');
+
+    images.forEach(image => {
+      const slideDiv = document.createElement('div');
+      slideDiv.classList.add('slide');
+      slideDiv.innerHTML = `
+        <img src="/uploads/${image.filename}" alt="${image.description}" style="width:100%">
+      `;
+      slideshowContainer.appendChild(slideDiv);
+    });
+
+    // Initialize slideshow after adding images
+    showSlides();
+  } catch (error) {
+    console.error('Error fetching banner images:', error);
+  }
+}
+
+function showSlides() {
+  let slides = document.getElementsByClassName("slide");
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+  if (slides.length > 0) {
+    slides[slideIndex - 1].style.display = "block";
+  }
+  setTimeout(showSlides, 5000); // Change image every 3 seconds
+}
+
+function changeSlide(n) {
+  let slides = document.getElementsByClassName("slide");
+  slides[slideIndex - 1].style.display = "none";
+  slideIndex += n;
+  if (slideIndex > slides.length) slideIndex = 1;
+  if (slideIndex < 1) slideIndex = slides.length;
+  slides[slideIndex - 1].style.display = "block";
+}
+
+fetchBannerImages();
+
+</script>
+    <!-- <script src="script.js"></script> -->
 </body>
 </html>

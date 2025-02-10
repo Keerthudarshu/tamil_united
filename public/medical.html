@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tamil Repatriates United Seva Trust</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.image-card {
+  border: 2px solid #ddd;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+    </style>
 </head>
 <body>
     <div class="container">
@@ -18,13 +33,19 @@
                 <!-- Other sidebar content -->
             </div>
             <ul class="menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="medical.html">Medical</a></li>
-                <li><a href="sports.html">Sports</a></li>
-                <li><a href="album.html">Album</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contect.html">Contact</a></li>
-            </ul>
+              <li><a href="index.html">Home</a></li>
+              <li class="dropdown">
+                  <a href="javascript:void(0)" class="dropbtn">category</a>
+                  <div class="dropdown-content">
+                      <a href="sports.html">Sports</a>
+                      <a href="Education.html">Education</a>
+                      <a href="medical.html">Medical</a>
+                  </div>
+              </li>
+              <li><a href="album.html">Album</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contect.html">Contact</a></li>
+          </ul>
         </nav>
 
         <!-- Main content -->
@@ -35,13 +56,50 @@
                     <h1>TAMIL REPATRIATES UNITED SEVA TRUST</h1>
                 </div>
             </header>
-
             
+            <div id="albumContainer" class="album-grid"></div>
 
             
         </div>
     </div>
 
-    <script src="album.js"></script>
+    
+        <!-- Existing code -->
+<script>
+      document.addEventListener("DOMContentLoaded", fetchMedicalImages);
+
+async function fetchMedicalImages() {
+  try {
+    const response = await fetch('http://localhost:3000/images/medical');
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const images = await response.json();
+
+    const container = document.getElementById('albumContainer');
+    container.innerHTML = ''; // Clear previous content
+
+    images.forEach(image => {
+      const imageDiv = document.createElement('div');
+      imageDiv.classList.add('image-card');
+      imageDiv.innerHTML = `
+        <h3>${image.type}</h3>
+        <p>${image.description}</p>
+        <img src="/uploads/${image.filename}" alt="${image.description}" width="300">
+      `;
+      container.appendChild(imageDiv);
+    });
+
+  } catch (error) {
+    console.error('Error fetching sports images:', error);
+  }
+}
+
+</script>
+
+    
+      
 </body>
 </html>

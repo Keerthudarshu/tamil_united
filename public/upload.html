@@ -14,6 +14,7 @@
       <option value="">Select a Category</option>
       <option value="Medical">Medical</option>
       <option value="Sports">Sports</option>
+      <option value="Education">Education</option>
     </select>
 
     <label for="type">Type:</label>
@@ -44,7 +45,7 @@
         });
         if (response.ok) {
           alert('Image uploaded successfully!');
-          window.location.href = 'album.html';
+          // window.location.href = 'album.html';
         } else {
           alert('Upload failed. Please try again.');
         }
