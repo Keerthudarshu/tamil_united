@@ -53,13 +53,53 @@ app.post('/upload', upload.single('image'), async (req, res) => {
   }
 });
 
-// Fetch images endpoint
+
+// Fetch all images endpoint
 app.get('/images', async (req, res) => {
   try {
     const images = await Image.find();
     res.json(images);
   } catch (error) {
     res.status(500).send('Error fetching images.');
+  }
+});
+
+// Fetch sports images directly
+app.get('/images/Sports', async (req, res) => {
+  try {
+    const sportsImages = await Image.find({ category: 'Sports' });
+    res.json(sportsImages);
+  } catch (error) {
+    res.status(500).send('Error fetching sports images.');
+  }
+});
+
+// Fetch sports images directly
+app.get('/images/Medical', async (req, res) => {
+  try {
+    const medicalImages = await Image.find({ category: 'Medical' });
+    res.json(medicalImages);
+  } catch (error) {
+    res.status(500).send('Error fetching sports images.');
+  }
+});
+
+// Fetch Education images directly
+app.get('/images/Education', async (req, res) => {
+  try {
+    const educationImages = await Image.find({ category: 'Education' });
+    res.json(educationImages);
+  } catch (error) {
+    res.status(500).send('Error fetching education images.');
+  }
+});
+
+app.get('/images/Banner', async (req, res) => {
+  try {
+    const banners = await Image.find({ type: 'Banner' });
+    res.json(banners);
+  } catch (error) {
+    res.status(500).send('Error fetching banner images.');
   }
 });
 
