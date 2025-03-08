@@ -5,8 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Image Upload</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body{ 
+      background: linear-gradient(#ffdad5, #fff7f9);
+    }
+  </style>
 </head>
+
 <body>
+  <div class="container">
+    <nav class="sidebar">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="src/image/TRUST2.jpg" alt="Logo">
+            </div>
+            <h2>TAMIL REPATRIATES UNITED SEVA TRUST</h2>
+        </div>
+        <ul class="menu">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Category</a>
+                <div class="dropdown-content">
+                    <a href="sports.html">Sports</a>
+                    <a href="education.html">Education</a>
+                    <a href="medical.html">Medical</a>
+                </div>
+            </li>
+            <li><a href="album.html">Album</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="./contect.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <header class="marquee">
+            <div class="moving-text">
+                <img src="src/image/TRUST2.jpg" class="textlogo" />
+                <h1>TAMIL REPATRIATES UNITED SEVA TRUST</h1>
+            </div>
+        </header>
+        
+   
   <h1>Upload Image</h1>
   <form id="uploadForm" enctype="multipart/form-data">
     <label for="category">Category:</label>
@@ -32,7 +72,8 @@
 
     <button type="submit">Upload</button>
   </form>
-
+</div>
+</div>
   <script>
     document.getElementById('uploadForm').addEventListener('submit', async function (event) {
       event.preventDefault();
